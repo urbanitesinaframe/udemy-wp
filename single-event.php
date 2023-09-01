@@ -25,5 +25,22 @@ while(have_posts()) {
     the_content();
     ?>
   </div>
+  <?php
+  
+  $relatedPrograms = get_field('related_programs');
+  if($relatedPrograms){
+    echo '<hr class="section-break">';
+    echo '<h2 class="headline headline--medium">Related Program(s)</h2>';
+    echo '<ul class="link-list min-list">';
+
+  foreach ($relatedPrograms as $relatedProgram) {?>
+    <li><a href="<?php echo get_the_permalink( $relatedProgram);?>"><?php echo get_the_title( $relatedProgram );?></a></li>
+  <?php }
+  echo '</ul>';
+  
+  }
+  ?>
   </div>
 <?php }
+get_footer();
+?>
